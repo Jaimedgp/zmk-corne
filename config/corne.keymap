@@ -8,6 +8,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <behaviors/mouse_keys.dtsi>
 
 
 / {
@@ -52,29 +53,29 @@
                 };
                 pairs_layer {
 // -----------------------------------------------------------------------------------------
-// |  ~  |  ´  | LBKT | RBKT |     |xxx|     |     |     |     |     |
-// | LT  | RT  | LPAR | RPAR |  ?  |xxx|     |     |     |     |_____|
-// |     |     | LBRC | RBRC |     |xxx|     |     |     |     |     |
+// |     |  ´  |  [   |  ]   |     |xxx|     |     |     |     |     |
+// |  <  |  >  |  (   |  )   |  ?  |xxx|     | BCK |     |     |_____|
+// |     |     |  {   |  }   |     |xxx|     |     |     |     |     |
 //              |______|_____|_____|xxx|_____|_____|_____|
 // -----------------------------------------------------------------------------------------
                         bindings = <
-   &kp TILDE  &kp SQT    &kp LBKT  &kp RBKT  &none           &none  &none  &none  &none  &none
-   &kp LT     &kp GT     &kp LPAR  &kp RPAR  &kp QMARK       &none  &none  &none  &none  &trans
-   &none      &none      &kp LBRC  &kp RBRC  &none           &none  &none  &none  &none  &none
-                         &trans  &trans  &trans              &trans  &trans  &trans
+   &trans  &kp SQT    &kp LBKT  &kp RBKT  &none           &none  &none     &none  &none  &none
+   &kp LT  &kp GT     &kp LPAR  &kp RPAR  &kp QMARK       &none  &kb BSPC  &none  &none  &trans
+   &none   &none      &kp LBRC  &kp RBRC  &none           &none  &none     &none  &none  &none
+                      &trans  &trans  &trans              &trans  &trans  &trans
                         >;
                 };
                 arrows_layer {
 // ----------------------------------------------------------------------------------------
-// |     |     |     |     |     |xxx| HOME | PGDWN | PGUP |  EN   | INS |
-// |     |     |     |     |     |xxx| LEFT | DOWN  |  UP  | RIGHT |_____|
-// |     |     |     |     |     |xxx|     |     |     |     |     |
-//            |______|_____|_____|xxx|_____|_____|_____|
+// |     |     |     |     |     |xxx| HOME |  PGDWN  |  PGUP   |  EN   | INS |
+// |     |     |     |     |     |xxx| LEFT |  DOWN   |   UP    | RIGHT |_____|
+// |     |     |     |     |     |xxx|      | SCRLL_D | SCRLL_U |     |     |
+//            |______|_____|_____|xxx|______|_____|_____|
 // -----------------------------------------------------------------------------------------
                         bindings = <
    &none      &none      &none     &none      &none                    &kp HOME  &kp PG_DN          &kp PG_UP          &kp END    &none
    &kp LSHFT  &kp LCTRL  &kp LGUI  &kp LALT   &kp LC(LS(MINUS))        &kp LEFT  &kp DOWN           &kp UP             &kp RIGHT  &trans
-   &none      &none      &none     &kp PSCRN  &none                    &none     &kp K_SCROLL_DOWN  &kp K_SCROLL_DOWN  &none      &none
+   &none      &none      &none     &kp PSCRN  &none                    &none     &msc SCRL_DOWN     &msc SCRL_UP  &none      &none
                            &trans  &trans     &trans                   &trans  &trans  &trans
                         >;
                 };
@@ -98,7 +99,7 @@
 // |  F2  |  F5  |  F8  |  F11 |  F14 |xxx|  0  |  4  |  5  |  6  |_____|
 // |  F1  |  F4  |  F7  |  F10 |  F13 |xxx|  -  |  1  |  2  |  3  |  +  |
 //                 |______|_____|_____|xxx|_____|_____|_____|
-// -----------------------------------------------------------------------------------------
+// --------->-------------------------------------------------------------------------------
                         bindings = <
    &kp F3  &kp F6  &kp F9  &kp F12  &kp F15           &kp DOT    &kp N7  &kp N8  &kp N9  &kp KP_MULTIPLY
    &kp F2  &kp F5  &kp F8  &kp F11  &kp F14           &kp N0     &kp N4  &kp N5  &kp N6  &trans
