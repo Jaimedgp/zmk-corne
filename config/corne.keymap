@@ -60,7 +60,7 @@
 // -----------------------------------------------------------------------------------------
                         bindings = <
    &trans  &kp SQT    &kp LBKT  &kp RBKT  &none           &none  &none     &none  &none  &none
-   &kp LT  &kp GT     &kp LPAR  &kp RPAR  &kp QMARK       &none  &kb BSPC  &none  &none  &trans
+   &kp LT  &kp GT     &kp LPAR  &kp RPAR  &kp QMARK       &none  &kp BSPC  &none  &none  &trans
    &none   &none      &kp LBRC  &kp RBRC  &none           &none  &none     &none  &none  &none
                       &trans  &trans  &trans              &trans  &trans  &trans
                         >;
