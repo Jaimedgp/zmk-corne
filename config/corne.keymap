@@ -110,16 +110,16 @@
                 };
                 config_layer {
 // -----------------------------------------------------------------------------------------
-// |    |    |    | BT_N   |   |xxx|    | VOL_U  | MED_N   | BRI_U  |   |
-// |    |    |    | OUT_T  |   |xxx|    | VOL_M  | MED_PP  |        |___|
-// |    |    |    | BT_P   |   |xxx|    | VOL_D  | MED_P   | BRI_D  |   |
-//              |____|____|____|xxx|____|____|____|
+// |    |    |    | BT_N   |       |xxx|    | VOL_U  | MED_N   | BRI_U  |   |
+// |    |    |    | OUT_T  | CLEAR |xxx|    | VOL_M  | MED_PP  |        |___|
+// |    |    |    | BT_P   |       |xxx|    | VOL_D  | MED_P   | BRI_D  |   |
+//                  |____|____|____|xxx|____|____|____|
 // -----------------------------------------------------------------------------------------
                         bindings = <
-   &none  &none  &none  &bt BT_NXT    &none        &none  &kp K_VOL_UP  &kp K_NEXT  &kp C_BRI_UP  &none
-   &none  &none  &none  &out OUT_TOG  &none        &none  &kp K_MUTE    &kp K_PP    &none         &trans
-   &none  &none  &none  &bt BT_PRV    &none        &none  &kp K_VOL_DN  &kp K_PREV  &kp C_BRI_DN  &none
-                     &trans  &trans  &trans        &trans  &trans  &trans
+   &none  &none  &none  &bt BT_NXT    &none             &none  &kp K_VOL_UP  &kp K_NEXT  &kp C_BRI_UP  &none
+   &none  &none  &none  &out OUT_TOG  &bt BT_CLR        &none  &kp K_MUTE    &kp K_PP    &none         &trans
+   &none  &none  &none  &bt BT_PRV    &none             &none  &kp K_VOL_DN  &kp K_PREV  &kp C_BRI_DN  &none
+                     &trans  &trans  &trans             &trans  &trans  &trans
                         >;
                 };
         };
