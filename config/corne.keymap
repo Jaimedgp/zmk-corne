@@ -23,6 +23,15 @@
                 then-layer = <5>;
             };
         };
+        macros {
+                spanish_n: spanish_n {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        bindings
+                                = <&kp TILDE &kp N>
+                                ;
+                };
+        };
 
         // behaviors {
         //     as: auto_shift {
@@ -41,13 +50,13 @@
 // -----------------------------------------------------------------------------------------
 // |  Q  |  W  |  E  |  R  |  T  |xxx|  Y  |  U   |  I  |  O  |  P  |
 // |  A  |  S  |  D  |  F  |  G  |xxx|  H  |  J   |  K  |  L  | ALT |
-// |  Z  |  X  |  C  |  V  |  B  |xxx|  N  |  M   |  ,  |  .  |  ;  |
+// |  Z  |  X  |  C  |  V  |  B  |xxx|  N  |  M   |  ,  |  .  |  ñ  |
 //    | CTRL,DEL | 1,TAB | 3,ENT |xxx| 4,SPC | 2,BCKSPC | SHFT,ESC |
 // -----------------------------------------------------------------------------------------
                         bindings = <
        &kp Q &kp W &kp E &kp R &kp T       &kp Y &kp U  &kp I     &kp O   &kp P
        &kp A &kp S &kp D &kp F &kp G       &kp H &kp J  &kp K     &kp L   &kp LALT
-       &kp Z &kp X &kp C &kp V &kp B       &kp N &kp M  &kp COMMA &kp DOT &kp SEMI
+       &kp Z &kp X &kp C &kp V &kp B       &kp N &kp M  &kp COMMA &kp DOT <&spanish_n>
    &mt LCTRL DEL &lt 1 TAB &lt 3 RET       &lt 4 SPC &lt 2 BSPC &mt LSHIFT ESC
                         >;
                 };
@@ -67,10 +76,10 @@
                 };
                 arrows_layer {
 // ----------------------------------------------------------------------------------------
-// |     |     |     |     |     |xxx| HOME |  PGDWN  |  PGUP   |  EN   | INS |
-// |     |     |     |     |     |xxx| LEFT |  DOWN   |   UP    | RIGHT |_____|
-// |     |     |     |     |     |xxx|      | SCRLL_D | SCRLL_U |     |     |
-//            |______|_____|_____|xxx|______|_____|_____|
+// |      |      |     |     |         |xxx| HOME |  PGDWN  |  PGUP   |  EN   | INS |
+// | SHFT | CTRL | GUI | ALT | C(S(-)) |xxx| LEFT |  DOWN   |   UP    | RIGHT |_____|
+// |      |      |     |     |         |xxx|      | SCRLL_D | SCRLL_U |     |     |
+//                  |______|_____|_____|xxx|______|_____|_____|
 // -----------------------------------------------------------------------------------------
                         bindings = <
    &none      &none      &none     &none      &none                    &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &none
@@ -110,15 +119,15 @@
                 };
                 config_layer {
 // -----------------------------------------------------------------------------------------
-// |    |    |    | BT_N   |       |xxx|    | VOL_U  | MED_N   | BRI_U  |   |
-// |    |    |    | OUT_T  | CLEAR |xxx|    | VOL_M  | MED_PP  |        |___|
-// |    |    |    | BT_P   |       |xxx|    | VOL_D  | MED_P   | BRI_D  |   |
+// |    |    |    | BT_N   |       |xxx|      | VOL_U  | MED_N   | BRI_U  |   |
+// |    |    |    | OUT_T  | CLEAR |xxx| LOCK | VOL_M  | MED_PP  |        |___|
+// |    |    |    | BT_P   |       |xxx|      | VOL_D  | MED_P   | BRI_D  |   |
 //                  |____|____|____|xxx|____|____|____|
 // -----------------------------------------------------------------------------------------
                         bindings = <
-   &none  &none  &none  &bt BT_NXT    &none             &none  &kp K_VOL_UP  &kp K_NEXT  &kp C_BRI_UP  &none
-   &none  &none  &none  &out OUT_TOG  &bt BT_CLR        &none  &kp K_MUTE    &kp K_PP    &none         &trans
-   &none  &none  &none  &bt BT_PRV    &none             &none  &kp K_VOL_DN  &kp K_PREV  &kp C_BRI_DN  &none
+   &none  &none  &none  &bt BT_NXT    &none             &none      &kp K_VOL_UP  &kp K_NEXT  &kp C_BRI_UP  &none
+   &none  &none  &none  &out OUT_TOG  &bt BT_CLR        &kp LG(L)  &kp K_MUTE    &kp K_PP    &none         &trans
+   &none  &none  &none  &bt BT_PRV    &none             &none      &kp K_VOL_DN  &kp K_PREV  &kp C_BRI_DN  &none
                      &trans  &trans  &trans             &trans  &trans  &trans
                         >;
                 };
