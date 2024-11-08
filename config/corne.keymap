@@ -25,7 +25,8 @@
                 compatible = "zmk,behavior-macro";
                 #binding-cells = <0>;
                 bindings
-                    = <&kp TILDE &kp N> ;
+                    = <&kp TILDE &kp N>
+                ;
             };
         };
 
