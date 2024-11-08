@@ -56,10 +56,10 @@
 //              |______|_____|_____|xxx|_____|_____|_____|
 // -----------------------------------------------------------------------------------------
                         bindings = <
-   &GRAVE  &kp SQT    &kp LBKT  &kp RBKT  &kp TILDE       &none  &none     &none  &none  &none
-   &kp LT  &kp GT     &kp LPAR  &kp RPAR  &kp QMARK       &none  &kp BSPC  &none  &none  &trans
-   &none   &none      &kp LBRC  &kp RBRC  &none           &none  &none     &none  &none  &none
-                          &trans  &trans  &trans          &trans  &trans  &trans
+   &kp GRAVE  &kp SQT  &kp LBKT  &kp RBKT  &kp TILDE       &none  &none     &none  &none  &none
+   &kp LT     &kp GT   &kp LPAR  &kp RPAR  &kp QMARK       &none  &kp BSPC  &none  &none  &trans
+   &none      &none    &kp LBRC  &kp RBRC  &none           &none  &none     &none  &none  &none
+                           &trans  &trans  &trans          &trans  &trans  &trans
                         >;
                 };
                 arrows_layer {
