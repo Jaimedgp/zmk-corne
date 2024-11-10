@@ -25,16 +25,30 @@
             td0: tap_dance_0 {
                 compatible = "zmk,behavior-tap-dance";
                 #binding-cells = <0>;
-                tapping-term-ms = <200>;
-                bindings = <&lt 2 BSPC>, <&kp BSPC>;
+                tapping-term-ms = <100>;
+                bindings = <&lt 2 BSPC>, <&kp BSPC>, <&kp BSPC>;
             };
         };
         macros {
-          spanish_n: spanish_n {
+          es_n: spanish_n {
                 compatible = "zmk,behavior-macro";
                 #binding-cells = <0>;
                 bindings
                     = <&kp TILDE &kp N>
+                ;
+            };
+          tsk: task {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                    = <&kp MINUS &kp SPC &kp LBKT &kp SPC &kp RBKT &kp SPC>
+                ;
+            };
+          cllout: callout {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                    = <&kp GT &kp SPC &kp LBKT &kp EXCL &kp N &kp O &kp T &kp E &kp RBKT &kp SPC>
                 ;
             };
         };
@@ -52,27 +66,27 @@
                         bindings = <
        &kp Q &kp W &kp E &kp R &kp T         &kp Y &kp U  &kp I     &kp O   &none
        &kp A &kp S &kp D &kp F &kp G         &kp H &kp J  &kp K     &kp L   &mt LALT P
-       &kp Z &kp X &kp C &kp V &kp B         &kp N &kp M  &kp COMMA &kp DOT &spanish_n
+       &kp Z &kp X &kp C &kp V &kp B         &kp N &kp M  &kp COMMA &kp DOT &es_n
        &mt LCTRL DEL &lt 1 TAB &lt 3 RET     &lt 4 SPC &td0 &mt LSHIFT ESC
                         >;
                 };
                 pairs_layer {
 // -----------------------------------------------------------------------------------------
-// |  `  |  ´  |  [   |  ]   |  ~  |xxx|     |     |     |     |     |
-// |  <  |  >  |  (   |  )   |  ?  |xxx|     | BCK |     |     |_____|
-// |     |     |  {   |  }   |  ¿  |xxx|     |     |     |     |     |
-//              |______|_____|_____|xxx|_____|_____|_____|
+// |  `  |  ´  |  [   |  ]   |  ~  |xxx|     | TASK | CLLOUT |      |     |
+// |  <  |  >  |  (   |  )   |  ?  |xxx|     |      |        |      |_____|
+// |     |  "  |  {   |  }   |  ¿  |xxx|     | G(1) |  G(2)  | G(3) |     |
+//              |______|_____|_____|xxx|_____|______|______|
 // -----------------------------------------------------------------------------------------
                         bindings = <
-   &kp GRAVE  &kp SQT  &kp LBKT  &kp RBKT  &kp TILDE         &none  &none     &none  &none  &none
-   &kp LT     &kp GT   &kp LPAR  &kp RPAR  &kp QMARK         &none  &kp BSPC  &none  &none  &trans
-   &none      &none    &kp LBRC  &kp RBRC  &kp RA(FSLH)      &none  &none     &none  &none  &none
+   &kp GRAVE  &kp SQT  &kp LBKT  &kp RBKT  &kp TILDE         &none  &tsk       &cllout    &none      &none
+   &kp LT     &kp GT   &kp LPAR  &kp RPAR  &kp QMARK         &none  &none      &none      &none      &trans
+   &none      &kp DQT  &kp LBRC  &kp RBRC  &kp RA(FSLH)      &none  &kp LG(1)  &kp LG(2)  &kp LG(2)  &none
                            &trans  &trans  &trans            &trans  &trans  &trans
                         >;
                 };
                 arrows_layer {
 // ----------------------------------------------------------------------------------------
-// |      |      |     |         |         |xxx| HOME |   PGDWN   |    PGUP   |  EN   |     |
+// |      |      |     |         |         |xxx| HOME |   PGDWN   |    PGUP   |  END  |     |
 // | SHFT | CTRL | GUI |   ALT   | C(S(-)) |xxx| LEFT |   DOWN    |     UP    | RIGHT |_____|
 // |      |      |     | PrntScr |         |xxx|      | [SCRLL_D] | [SCRLL_U] |       |     |
 //                      |______|_____|_____|xxx|______|_____|_____|
