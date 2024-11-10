@@ -16,11 +16,11 @@
 
         conditional_layers {
             compatible = "zmk,conditional-layers";
-            config_layer {
+            config_layer_5 {
                 if-layers = <1 2>;
                 then-layer = <5>;
             };
-            config_layer {
+            config_layer_6 {
                 if-layers = <3 4>;
                 then-layer = <6>;
             };
