@@ -146,16 +146,16 @@
                 };
                 more_layer {
 // -----------------------------------------------------------------------------------------
-// |    |    |    |    |     |xxx|      |      | SP_PASTE |     |   |
-// |    |    |    |    |     |xxx|      | COPY |  PASTE   | CUT |___|
-// |    |    |    |    |     |xxx|      |      | SP_PASTE |     |   |
-//            |____|____|____|xxx|____|____|____|
+// |    |     |      | SP_PASTE |     |xxx|      |    |    |    |   |
+// |    | CUT | COPY |  PASTE   |     |xxx|      |    |    |    |___|
+// |    |     |      | SP_PASTE |     |xxx|      |    |    |    |   |
+//                     |____|____|____|xxx|____|____|____|
 // -----------------------------------------------------------------------------------------
                         bindings = <
-   &none  &none  &none  &none    &none         &none  &none          &kp LC(LS(V))   &none         &trans
-   &none  &none  &none  &none    &none         &none  &kp C_AC_COPY  &kp C_AC_PASTE  &kp C_AC_CUT  &trans
-   &none  &none  &none  &none    &none         &none  &none          &kp LC(LA(V))   &none         &trans
-                      &trans  &trans  &trans            &trans  &trans  &trans
+   &none  &none         &none          &kp LC(LS(V))   &none         &none  &none  &none  &none    &none
+   &none  &kp C_AC_CUT  &kp C_AC_COPY  &kp C_AC_PASTE  &none         &none  &none  &none  &none    &trans
+   &none  &none         &none          &kp LC(LA(V))   &none         &none  &none  &none  &none    &none
+                                       &trans  &trans  &trans        &trans  &trans  &trans
                         >;
                 };
         };
