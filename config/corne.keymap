@@ -12,9 +12,6 @@
 &mt {
     tapping-term-ms = <300>;
 };
-&lt {
-    tapping-term-ms = <200>;
-};
 
 / {
         chosen {
@@ -36,13 +33,13 @@
             td0: tap_dance_0 {
                 compatible = "zmk,behavior-tap-dance";
                 #binding-cells = <0>;
-                tapping-term-ms = <150>;
-                bindings = <&mo 2>, <&kp BSPC>;
+                tapping-term-ms = <200>;
+                bindings = <&mo 2>, <&kp BSPC>, <&kp BSPC>;
             };
             tmouse: tap_dance_mouse {
                 compatible = "zmk,behavior-tap-dance";
                 #binding-cells = <0>;
-                tapping-term-ms = <150>;
+                tapping-term-ms = <200>;
                 bindings = <&to 0>, <&to 6>;
             };
         };
@@ -108,9 +105,9 @@
 //                      |______|_____|_____|xxx|______|_____|_____|
 // -----------------------------------------------------------------------------------------
                         bindings = <
-   &none      &none      &none     &none      &none                  &kp HOME   &kp PG_DN             &kp PG_UP           &kp END    &none
-   &kp LSHFT  &kp LCTRL  &kp LGUI  &kp LALT   &kp LC(LS(MINUS))      &kp LEFT   &kp DOWN              &kp UP              &kp RIGHT  &trans
-   &none      &none      &none     &kp PSCRN  &none                  &none      &kp C_AC_SCROLL_DOWN  &kp C_AC_SCROLL_UP  &none      &none
+   &none      &none      &none     &none      &none                  &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &none
+   &kp LSHFT  &kp LCTRL  &kp LGUI  &kp LALT   &kp LC(LS(MINUS))      &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &trans
+   &none      &none      &none     &kp PSCRN  &none                  &none      &none      &none      &none      &none
                            &trans  &trans     &trans                 &trans  &trans  &trans
                         >;
                 };
