@@ -9,6 +9,13 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
+&mt {
+    tapping-term-ms = <300>;
+};
+&lt {
+    tapping-term-ms = <200>;
+};
+
 / {
         chosen {
           zmk,matrix_transform = &five_column_transform;
@@ -61,12 +68,6 @@
                     = <&kp GT &kp SPC &kp LBKT &kp EXCL &kp N &kp O &kp T &kp E &kp RBKT &kp SPC>
                 ;
             };
-        };
-        &mt {
-            tapping-term-ms = <300>;
-        };
-        &lt {
-            tapping-term-ms = <200>;
         };
         keymap {
                 compatible = "zmk,keymap";
