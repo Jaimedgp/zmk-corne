@@ -30,7 +30,13 @@
                 compatible = "zmk,behavior-tap-dance";
                 #binding-cells = <0>;
                 tapping-term-ms = <150>;
-                bindings = <&lt 2 BSPC>, <&kp BSPC>;
+                bindings = <&mo 2>, <&kp BSPC>;
+            };
+            tmouse: tap_dance_mouse {
+                compatible = "zmk,behavior-tap-dance";
+                #binding-cells = <0>;
+                tapping-term-ms = <150>;
+                bindings = <&to 0>, <&to 6>;
             };
         };
         macros {
@@ -56,19 +62,24 @@
                 ;
             };
         };
-
+        &mt {
+            tapping-term-ms = <300>;
+        };
+        &lt {
+            tapping-term-ms = <200>;
+        };
         keymap {
                 compatible = "zmk,keymap";
 
                 default_layer {
 // -----------------------------------------------------------------------------------------
-// |  Q  |  W  |  E  |  R  |  T  |xxx|  Y  |  U   |  I  |  O  |      |
-// |  A  |  S  |  D  |  F  |  G  |xxx|  H  |  J   |  K  |  L  | A[P] |
-// |  Z  |  X  |  C  |  V  |  B  |xxx|  N  |  M   |  ,  |  .  |  ñ   |
+// |  Q  |  W  |  E  |  R  |  T  |xxx|  Y  |  U   |  I  |  O  | MOUSE |
+// |  A  |  S  |  D  |  F  |  G  |xxx|  H  |  J   |  K  |  L  |  A[P] |
+// |  Z  |  X  |  C  |  V  |  B  |xxx|  N  |  M   |  ,  |  .  |   ñ   |
 //    | CTRL,DEL | 1,TAB | 3,ENT |xxx| 4,SPC | 2,BCKSPC | SHFT,ESC |
 // -----------------------------------------------------------------------------------------
                         bindings = <
-       &kp Q &kp W &kp E &kp R &kp T         &kp Y &kp U  &kp I     &kp O   &none
+       &kp Q &kp W &kp E &kp R &kp T         &kp Y &kp U  &kp I     &kp O   &tmouse
        &kp A &kp S &kp D &kp F &kp G         &kp H &kp J  &kp K     &kp L   &mt LALT P
        &kp Z &kp X &kp C &kp V &kp B         &kp N &kp M  &kp COMMA &kp DOT &es_n
        &mt LCTRL DEL &lt 1 TAB &lt 3 RET     &lt 4 SPC &td0 &mt LSHIFT ESC
@@ -96,9 +107,9 @@
 //                      |______|_____|_____|xxx|______|_____|_____|
 // -----------------------------------------------------------------------------------------
                         bindings = <
-   &none      &none      &none     &none      &none                  &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &none
-   &kp LSHFT  &kp LCTRL  &kp LGUI  &kp LALT   &kp LC(LS(MINUS))      &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &trans
-   &none      &none      &none     &kp PSCRN  &none                  &none      &none      &none      &none      &none
+   &none      &none      &none     &none      &none                  &kp HOME   &kp PG_DN          &kp PG_UP        &kp END    &none
+   &kp LSHFT  &kp LCTRL  &kp LGUI  &kp LALT   &kp LC(LS(MINUS))      &kp LEFT   &kp DOWN           &kp UP           &kp RIGHT  &trans
+   &none      &none      &none     &kp PSCRN  &none                  &none      &C_AC_SCROLL_DOWN  &C_AC_SCROLL_UP  &none      &none
                            &trans  &trans     &trans                 &trans  &trans  &trans
                         >;
                 };
@@ -146,13 +157,13 @@
                 };
                 more_layer {
 // -----------------------------------------------------------------------------------------
-// |    |     |      | SP_PASTE |     |xxx|      |    |    |    |   |
-// |    | CUT | COPY |  PASTE   |     |xxx|      |    |    |    |___|
-// |    |     |      | SP_PASTE |     |xxx|      |    |    |    |   |
+// |    |     |      | SP_PASTE |     |xxx|      |    |    |    | MOUSE |
+// |    | CUT | COPY |  PASTE   |     |xxx|      |    |    |    |_______|
+// |    |     |      | SP_PASTE |     |xxx|      |    |    |    |       |
 //                     |____|____|____|xxx|____|____|____|
 // -----------------------------------------------------------------------------------------
                         bindings = <
-   &none  &none         &none          &kp LC(LS(V))   &none         &none  &none  &none  &none    &none
+   &none  &none         &none          &kp LC(LS(V))   &none         &none  &none  &none  &none    &trans
    &none  &kp C_AC_CUT  &kp C_AC_COPY  &kp C_AC_PASTE  &none         &none  &none  &none  &none    &trans
    &none  &none         &none          &kp LC(LA(V))   &none         &none  &none  &none  &none    &none
                                        &trans  &trans  &trans        &trans  &trans  &trans
