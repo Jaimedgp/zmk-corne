@@ -77,8 +77,8 @@
                 #binding-cells = <0>;
                 bindings
                     = <&macro_press &kp LCTRL &kp LSHFT>,
-                    = <&macro_tap &kp LBKT>,
-                    = <&macro_release &kp LCTRL &kp LSHFT>,
+                      <&macro_tap &kp LBKT>,
+                      <&macro_release &kp LCTRL &kp LSHFT>,
                 ;
             };
           indt: indent {
@@ -86,8 +86,8 @@
                 #binding-cells = <0>;
                 bindings
                     = <&macro_press &kp LCTRL &kp LSHFT>,
-                    = <&macro_tap &kp RBKT>,
-                    = <&macro_release &kp LCTRL &kp LSHFT>,
+                      <&macro_tap &kp RBKT>,
+                      <&macro_release &kp LCTRL &kp LSHFT>,
                 ;
             };
         };
