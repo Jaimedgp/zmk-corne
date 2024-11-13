@@ -12,6 +12,9 @@
 &mt {
     tapping-term-ms = <400>;
 };
+&lt {
+    tapping-term-ms = <100>;
+}
 
 / {
         chosen {
@@ -33,8 +36,8 @@
             td0: tap_dance_0 {
                 compatible = "zmk,behavior-tap-dance";
                 #binding-cells = <0>;
-                tapping-term-ms = <300>;
-                bindings = <&lt 2 BSPC>, <&kp BSPC>, <&kp BSPC>;
+                tapping-term-ms = <400>;
+                bindings = <&lt 2 BSPC>, <&kp BSPC>;
             };
             tdm: tap_dance_mouse {
                 compatible = "zmk,behavior-tap-dance";
