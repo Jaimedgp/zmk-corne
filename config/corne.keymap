@@ -173,7 +173,7 @@
 // -----------------------------------------------------------------------------------------
                         bindings = <
    &none      &none  &none  &bt BT_NXT    &none             &none      &kp K_VOL_UP  &kp K_NEXT  &kp C_BRI_UP  &none
-   &und-indt  &indt  &none  &out OUT_TOG  &bt BT_CLR        &kp LG(L)  &kp K_MUTE    &kp K_PP    &none         &trans
+   &und_indt  &indt  &none  &out OUT_TOG  &bt BT_CLR        &kp LG(L)  &kp K_MUTE    &kp K_PP    &none         &trans
    &none      &none  &none  &bt BT_PRV    &none             &none      &kp K_VOL_DN  &kp K_PREV  &kp C_BRI_DN  &none
                       &trans  &trans  &trans            &trans  &trans  &trans
                         >;
