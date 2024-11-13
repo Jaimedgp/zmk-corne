@@ -14,7 +14,7 @@
 };
 &lt {
     tapping-term-ms = <100>;
-}
+};
 
 / {
         chosen {
