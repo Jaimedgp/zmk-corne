@@ -10,7 +10,7 @@
 #include <dt-bindings/zmk/outputs.h>
 
 &mt {
-    tapping-term-ms = <300>;
+    tapping-term-ms = <400>;
 };
 
 / {
@@ -33,10 +33,10 @@
             td0: tap_dance_0 {
                 compatible = "zmk,behavior-tap-dance";
                 #binding-cells = <0>;
-                tapping-term-ms = <200>;
-                bindings = <&mo 2>, <&kp BSPC>, <&kp BSPC>;
+                tapping-term-ms = <300>;
+                bindings = <&lt 2 BSPC>, <&kp BSPC>, <&kp BSPC>;
             };
-            tmouse: tap_dance_mouse {
+            tdm: tap_dance_mouse {
                 compatible = "zmk,behavior-tap-dance";
                 #binding-cells = <0>;
                 tapping-term-ms = <200>;
@@ -65,6 +65,31 @@
                     = <&kp GT &kp SPC &kp LBKT &kp EXCL &kp N &kp O &kp T &kp E &kp RBKT &kp SPC>
                 ;
             };
+          d_ln: double_underline {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                    = <&kp UNDER &kp UNDER>
+                ;
+            };
+          und-indt: undo_indent {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                    = <&macro_press &kp LCTRL &kp LSHFT>,
+                    = <&macro_tap &kp LBKT>,
+                    = <&macro_release &kp LCTRL &kp LSHFT>,
+                ;
+            };
+          indt: indent {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                    = <&macro_press &kp LCTRL &kp LSHFT>,
+                    = <&macro_tap &kp RBKT>,
+                    = <&macro_release &kp LCTRL &kp LSHFT>,
+                ;
+            };
         };
         keymap {
                 compatible = "zmk,keymap";
@@ -77,7 +102,7 @@
 //    | CTRL,DEL | 1,TAB | 3,ENT |xxx| 4,SPC | 2,BCKSPC | SHFT,ESC |
 // -----------------------------------------------------------------------------------------
                         bindings = <
-       &kp Q &kp W &kp E &kp R &kp T         &kp Y &kp U  &kp I     &kp O   &tmouse
+       &kp Q &kp W &kp E &kp R &kp T         &kp Y &kp U  &kp I     &kp O   &tdm
        &kp A &kp S &kp D &kp F &kp G         &kp H &kp J  &kp K     &kp L   &mt LALT P
        &kp Z &kp X &kp C &kp V &kp B         &kp N &kp M  &kp COMMA &kp DOT &es_n
        &mt LCTRL DEL &lt 1 TAB &lt 3 RET     &lt 4 SPC &td0 &mt LSHIFT ESC
@@ -85,13 +110,13 @@
                 };
                 pairs_layer {
 // -----------------------------------------------------------------------------------------
-// |  `  |  ´  |  [   |  ]   |  ~  |xxx|     | TASK | CLLOUT |      |     |
+// |  `  |  ´  |  [   |  ]   |  ~  |xxx|     | TASK | CLLOUT |  D_  |     |
 // |  <  |  >  |  (   |  )   |  ?  |xxx|     |      |        |      |_____|
 // |     |  "  |  {   |  }   |  ¿  |xxx|     | G(1) |  G(2)  | G(3) |     |
 //              |______|_____|_____|xxx|_____|______|______|
 // -----------------------------------------------------------------------------------------
                         bindings = <
-   &kp GRAVE  &kp SQT  &kp LBKT  &kp RBKT  &kp TILDE         &none  &tsk        &cllout     &none       &none
+   &kp GRAVE  &kp SQT  &kp LBKT  &kp RBKT  &kp TILDE         &none  &tsk        &cllout     &d_ln       &none
    &kp LT     &kp GT   &kp LPAR  &kp RPAR  &kp QMARK         &none  &none       &none       &none       &trans
    &none      &kp DQT  &kp LBRC  &kp RBRC  &kp RA(FSLH)      &none  &kp LG(N1)  &kp LG(N2)  &kp LG(N3)  &none
                            &trans  &trans  &trans            &trans  &trans  &trans
@@ -141,15 +166,15 @@
                 };
                 config_layer {
 // -----------------------------------------------------------------------------------------
-// |    |    |    | BT_N   |       |xxx|      | VOL_U  | MED_N   | BRI_U  |   |
-// |    |    |    | OUT_T  | CLEAR |xxx| LOCK | VOL_M  | MED_PP  |        |___|
-// |    |    |    | BT_P   |       |xxx|      | VOL_D  | MED_P   | BRI_D  |   |
-//                  |____|____|____|xxx|____|____|____|
+// |        |      |    | BT_N   |       |xxx|      | VOL_U  | MED_N   | BRI_U  |   |
+// | U-INDT | INDT |    | OUT_T  | CLEAR |xxx| LOCK | VOL_M  | MED_PP  |        |___|
+// |        |      |    | BT_P   |       |xxx|      | VOL_D  | MED_P   | BRI_D  |   |
+//                        |____|____|____|xxx|____|____|____|
 // -----------------------------------------------------------------------------------------
                         bindings = <
-   &none  &none  &none  &bt BT_NXT    &none             &none      &kp K_VOL_UP  &kp K_NEXT  &kp C_BRI_UP  &none
-   &none  &none  &none  &out OUT_TOG  &bt BT_CLR        &kp LG(L)  &kp K_MUTE    &kp K_PP    &none         &trans
-   &none  &none  &none  &bt BT_PRV    &none             &none      &kp K_VOL_DN  &kp K_PREV  &kp C_BRI_DN  &none
+   &none      &none  &none  &bt BT_NXT    &none             &none      &kp K_VOL_UP  &kp K_NEXT  &kp C_BRI_UP  &none
+   &und-indt  &indt  &none  &out OUT_TOG  &bt BT_CLR        &kp LG(L)  &kp K_MUTE    &kp K_PP    &none         &trans
+   &none      &none  &none  &bt BT_PRV    &none             &none      &kp K_VOL_DN  &kp K_PREV  &kp C_BRI_DN  &none
                       &trans  &trans  &trans            &trans  &trans  &trans
                         >;
                 };
@@ -161,7 +186,7 @@
 //                     |____|____|____|xxx|____|____|____|
 // -----------------------------------------------------------------------------------------
                         bindings = <
-   &none  &none         &none          &kp LC(LS(V))   &none         &none  &none  &none  &none    &trans
+   &none  &none         &none          &kp LC(LS(V))   &none         &none  &none  &none  &none    &tdm
    &none  &kp C_AC_CUT  &kp C_AC_COPY  &kp C_AC_PASTE  &none         &none  &none  &none  &none    &trans
    &none  &none         &none          &kp LC(LA(V))   &none         &none  &none  &none  &none    &none
                                        &trans  &trans  &trans        &trans  &trans  &trans
