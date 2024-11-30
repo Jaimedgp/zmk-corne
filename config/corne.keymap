@@ -55,7 +55,7 @@
                 bindings
                     = <&kp QMARK &kp EXCL>
                 ;
-            }
+            };
           tsk: task {
                 compatible = "zmk,behavior-macro";
                 #binding-cells = <0>;
