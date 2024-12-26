@@ -13,10 +13,6 @@
     tapping-term-ms = <400>;
     flavor = "tap-preferred";
 };
-&lt {
-    tapping-term-ms = <200>;
-};
-
 / {
         chosen {
           zmk,matrix_transform = &five_column_transform;
