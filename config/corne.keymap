@@ -4,10 +4,14 @@
  * SPDX-License-Identifier: MIT
  */
 
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 600  // example: 1500
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 10    // example: 20
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/pointing.h>
 
 &mt {
     tapping-term-ms = <400>;
@@ -126,15 +130,15 @@
                 };
                 arrows_layer {
 // ----------------------------------------------------------------------------------------
-// |      |      |     |         |         |xxx| HOME |   PGDWN   |    PGUP   |  END  |     |
-// | SHFT | CTRL | GUI |   ALT   | C(S(-)) |xxx| LEFT |   DOWN    |     UP    | RIGHT |_____|
-// |      |      |     | PrntScr |         |xxx|      | [SCRLL_D] | [SCRLL_U] |       |     |
+// |      |      |     |         |         |xxx|  HOME   |  PGDWN  |   PGUP  |   END   |     |
+// | SHFT | CTRL | GUI |   ALT   | C(S(-)) |xxx|  LEFT   |  DOWN   |    UP   |  RIGHT  |_____|
+// |      |      |     | PrntScr |         |xxx| SCRLL_L | SCRLL_D | SCRLL_U | SCRLL_R |     |
 //                      |______|_____|_____|xxx|______|$$$$$|_____|
 // -----------------------------------------------------------------------------------------
                         bindings = <
-   &none      &none      &none     &none      &none                  &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &none
-   &kp LSHFT  &kp LCTRL  &kp LGUI  &kp LALT   &kp LC(LS(MINUS))      &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &trans
-   &none      &none      &none     &kp PSCRN  &none                  &none      &none      &none      &none      &none
+   &none      &none      &none     &none      &none                  &kp HOME        &kp PG_DN       &kp PG_UP     &kp END          &none
+   &kp LSHFT  &kp LCTRL  &kp LGUI  &kp LALT   &kp LC(LS(MINUS))      &kp LEFT        &kp DOWN        &kp UP        &kp RIGHT        &trans
+   &none      &none      &none     &kp PSCRN  &none                  &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &none
                            &trans  &trans     &trans                 &trans  &trans  &trans
                         >;
                 };
