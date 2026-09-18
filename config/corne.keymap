@@ -184,7 +184,7 @@
 //                     |____|____|$$$$|xxx|$$$$|____|____|
 // -----------------------------------------------------------------------------------------
                         bindings = <
-   &none  &none         &none          &kp LC(LS(V))   &none         &none           &mkp LCLK       &mkp RCLK     &mkp MCLK        &td_m
+   &none  &none         &none          &kp LC(LS(V))   &none         &none           &mkp LCLK       &mkp RCLK     &mkp MCLK        &none
    &none  &kp C_AC_CUT  &kp C_AC_COPY  &kp C_AC_PASTE  &none         &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans
    &none  &none         &none          &kp LC(LA(V))   &none         &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &none
                                        &trans  &trans  &trans        &trans  &trans  &trans
