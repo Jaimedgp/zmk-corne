@@ -33,14 +33,6 @@
                 then-layer = <6>;
             };
         };
-        behaviors {
-           td_m: tap_dance_mouse {
-                compatible = "zmk,behavior-tap-dance";
-                #binding-cells = <0>;
-                tapping-term-ms = <200>;
-                bindings = <&to 0>, <&to 6>;
-            };
-        };
         macros {
           es_n: spanish_n {
                 compatible = "zmk,behavior-macro";
@@ -108,7 +100,7 @@
 //    | CTRL,DEL | 1,TAB | 3,ENT |xxx| 4,SPC | 2,BCKSPC | SHFT,ESC |
 // -----------------------------------------------------------------------------------------
                         bindings = <
-       &kp Q &kp W &kp E &kp R &kp T         &kp Y &kp U  &kp I     &kp O   &td_m
+       &kp Q &kp W &kp E &kp R &kp T         &kp Y &kp U  &kp I     &kp O   &none
        &kp A &kp S &kp D &kp F &kp G         &kp H &kp J  &kp K     &kp L   &mt LALT P
        &kp Z &kp X &kp C &kp V &kp B         &kp N &kp M  &kp COMMA &kp DOT &es_n
        &mt LCTRL DEL &lt 1 TAB &lt 3 RET     &lt 4 SPC &lt 2 BSPC &mt LSHIFT ESC
